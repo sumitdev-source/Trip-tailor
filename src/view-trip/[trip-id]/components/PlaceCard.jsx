@@ -103,3 +103,99 @@ function PlaceCard({ place }) {
 }
 
 export default PlaceCard;
+
+// This component is responsible for displaying a single place card UI
+// It receives a 'place' object as input (props) which contains all place-related data
+
+
+// STEP 1: Component Initialization
+// When the component renders, it initializes a state variable to store the image URL
+// Initially, this state is empty because no API call has been made yet
+
+
+// STEP 2: Fallback Handling
+// Before image is fetched, a default placeholder image is used
+// This ensures UI does not break or show empty space
+
+
+// STEP 3: Trigger Side Effect (useEffect)
+// A side effect runs whenever the 'place' data changes
+// This ensures that whenever a new place is passed, a new image is fetched
+
+
+// STEP 4: Safety Check
+// If 'place' is not available, the function exits early
+// This prevents unnecessary API calls and avoids runtime errors
+
+
+// STEP 5: Prepare API Request
+// A request payload is created using place name
+// This name is used to search for place details in external API (Google Places)
+
+
+// STEP 6: API Call Execution
+// An asynchronous request is made to fetch place details
+// This includes metadata like photos, location info, etc.
+
+
+// STEP 7: Handle API Response
+// Once response is received:
+// - Data is deeply nested, so optional chaining is used
+// - First place result is accessed
+// - From that, first photo reference is extracted
+
+
+// STEP 8: Generate Image URL
+// A predefined URL template is used
+// The extracted photo reference is inserted into the template
+// This creates a usable image URL
+
+
+// STEP 9: Update State
+// Generated image URL is stored in component state
+// Updating state triggers re-render of component
+
+
+// STEP 10: Re-render with Image
+// Now the UI updates and displays the fetched image instead of placeholder
+
+
+// STEP 11: Error Handling
+// If API fails, error is caught and logged
+// UI still remains stable because fallback image is used
+
+
+// STEP 12: Image Load Failure Handling
+// If image URL is invalid or fails to load:
+// - An error handler replaces it with placeholder image
+// - Prevents broken image UI
+
+
+// STEP 13: Click Interaction
+// The image is wrapped in a clickable link
+// When user clicks:
+// - It opens Google Maps in a new tab
+// - Search query is dynamically created using place name + details
+
+
+// STEP 14: Display Content
+// Along with image, textual information is shown:
+// - Place name (always shown)
+// - Additional details (shown only if available)
+// - Best time to visit (optional)
+// - Ticket pricing (optional)
+// - Rating (optional)
+
+
+// STEP 15: Conditional Rendering
+// Each optional field is displayed only if data exists
+// This keeps UI clean and avoids showing empty values
+
+
+// FINAL SUMMARY (Interview Ready)
+// This component dynamically fetches and displays place images using an external API.
+// It uses a side effect to trigger API calls based on prop changes,
+// safely extracts nested data, updates state to re-render UI,
+// and ensures robustness using fallback handling and error management.
+// It also enhances user experience by providing navigation to Google Maps
+// and conditionally rendering additional place information.
